@@ -47,6 +47,14 @@ on:
         - "fun"
         - "Mac"
         - "Win"
+      extend_function_keys:
+        description: 'extend_function_keys'
+        required: false
+        default: 'default'
+        type: choice
+        options:
+        - "default"
+        - "yes"
       layers:
         description: 'layers'
         required: false
@@ -79,6 +87,7 @@ jobs:
       shield: ${{ steps.process-inputs.outputs.shield }}
       alphas: ${{ steps.process-inputs.outputs.alphas }}
       nav: ${{ steps.process-inputs.outputs.nav }}
+      extend_function_keys: ${{ steps.process-inputs.outputs.extend_function_keys }}
       clipboard: ${{ steps.process-inputs.outputs.clipboard }}
       layers: ${{ steps.process-inputs.outputs.layers }}
       mapping: ${{ steps.process-inputs.outputs.mapping }}
@@ -99,6 +108,7 @@ jobs:
           set-output "alphas" "${{ github.event.inputs.alphas }}"
           set-output "nav" "${{ github.event.inputs.nav }}"
           set-output "clipboard" "${{ github.event.inputs.clipboard }}"
+          set-output "extend_function_keys" "${{ github.event.inputs.extend_function_keys}}"
           set-output "layers" "${{ github.event.inputs.layers }}"
           set-output "mapping" "${{ github.event.inputs.mapping }}"
           set-output "custom_config" "${{ github.event.inputs.custom_config }}"
@@ -113,6 +123,7 @@ jobs:
       shield: ${{ needs.process-inputs.outputs.shield }}
       alphas: ${{ needs.process-inputs.outputs.alphas }}
       nav: ${{ needs.process-inputs.outputs.nav }}
+      extend_function_keys: ${{ needs.process-inputs.outputs.extend_function_keys }}
       clipboard: ${{ needs.process-inputs.outputs.clipboard }}
       layers: ${{ needs.process-inputs.outputs.layers }}
       mapping: ${{ needs.process-inputs.outputs.mapping }}

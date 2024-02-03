@@ -20,6 +20,9 @@ on:
       clipboard:
         type: string
         default: '["default"]'
+      extend_function_keys:
+        type: string
+        default: '["default"]'
       layers:
         type: string
         default: '["default"]'
@@ -49,6 +52,7 @@ jobs:
         alphas: ${{ fromJSON(inputs.alphas) }}
         nav: ${{ fromJSON(inputs.nav) }}
         clipboard: ${{ fromJSON(inputs.clipboard) }}
+        extend_function_keys: ${{ fromJSON(inputs.extend_function_keys) }}
         layers: ${{ fromJSON(inputs.layers) }}
         mapping: ${{ fromJSON(inputs.mapping) }}
         custom_config: ${{ fromJSON(inputs.custom_config) }}
@@ -104,7 +108,7 @@ jobs:
             artifact_build_name="$artifact_build_name config_"`echo "${{ matrix.custom_config }}" | md5sum | head -c "$hash_length"`
           fi
 
-          for option in "alphas_${{ matrix.alphas }}" "nav_${{ matrix.nav }}" "clipboard_${{ matrix.clipboard }}" "layers_${{ matrix.layers }}" "mapping_${{ matrix.mapping }}"
+          for option in "alphas_${{ matrix.alphas }}" "nav_${{ matrix.nav }}" "clipboard_${{ matrix.clipboard }}" "extend_function_keys_${{ matrix.extend_function_keys }}" "layers_${{ matrix.layers }}" "mapping_${{ matrix.mapping }}"
           do
             case "$option" in
               *_ ) ;;
