@@ -28,6 +28,8 @@
 
 #include "miryoku_clipboard.h"
 
+#include "miryoku_extend_function_keys.h"
+
 #include "miryoku_double_tap_guard.h"
 
 #include "miryoku_shift_functions.h"
